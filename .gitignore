@@ -1,2 +1,2 @@
-.env
+process.env
 node_modules
