@@ -6,7 +6,6 @@ const ctrl = require('./products_controller')
 const app = express()
 const { SERVER_PORT, CONNECTION_STRING } = process.env
 
-app.use(express.json())
 
 massive({
     connectionString: CONNECTION_STRING,
@@ -14,6 +13,8 @@ massive({
 }).then(dbInstance => {
     app.set('db', dbInstance)
 }).catch(err => console.log(err))
+
+app.use(express.json())
 
 app.post('/api/products', ctrl.create)
 app.get('/api/products', ctrl.getAll)

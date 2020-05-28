@@ -18,6 +18,7 @@ module.exports = {
   },
   getOne: (req, res, next) => {
     const dbInstance = req.app.get("db");
+    const { id } = req.params;
 
     dbInstance
       .read_product(id)
@@ -50,6 +51,7 @@ module.exports = {
   },
   update: (req, res, next) => {
     const dbInstance = req.app.get("db");
+    const { params, query } = req;
 
     dbInstance
       .update_product([params.id, query.desc])
@@ -66,6 +68,7 @@ module.exports = {
   },
   delete: (req, res, next) => {
     const dbInstance = req.app.get("db");
+    const { id } = req.params;
 
     dbInstance
       .delete_product(id)
